@@ -5,29 +5,28 @@ This repository provides a complete deep learning pipeline for **building footpr
 ## Key Features & Design Choices
 
 * **Efficient U-Net Architecture**
-  A **lightweight U-Net** with an *EfficientNet-B3* encoder backbone, for fast inference.
+  A **lightweight U-Net** with an *EfficientNet-B3* encoder backbone, chosen for balance between model capacity and inference speed. EfficientNet-B3 offers a strong feature representation without overfitting on the small dataset.
 
 * **Multi-Scale Feature Extraction with Inception Modules**
-  Tested **inception-style convolutional blocks** in the decoder to improve **scale invariance**, allowing the model to capture both fine building details and larger structures effectively.
+  The decoder incorporates **inception-style convolutional blocks** to improve **scale invariance**. This design enables the model to capture both fine-grained details of small buildings and the overall structure of larger complexes, addressing the challenge posed by high-resolution aerial images.
 
 * **Transfer Learning for Data Efficiency**
-  Leveraging pretrained ImageNet weights to overcome **limited dataset size**.
+  Leveraging **ImageNet-pretrained weights** accelerates convergence and improves generalisation, mitigating the impact of limited labeled data.
 
 * **Hybrid Loss Function**
-  A combination of **Weighted Binary Cross-Entropy** and **Dice Loss** balances pixel-level precision with overall shape quality.
-  *(Focal and Tversky losses were also tested and yielded similar performance.)*
+  A combination of **Weighted Binary Cross-Entropy** and **Dice Loss** ensures a balance between **pixel-level precision** and **overall mask shape quality**. Alternative losses like focal and Tversky were also explored but provided comparable results, validating this choice.
 
 * **Dynamic Learning Rate Scheduling**
-  **Cosine Annealing** is used to adjust the learning rate during training, helping the model converge.
+  **Cosine Annealing** adjusts the learning rate during training, helping the model achieve smoother convergence.
 
 ## Results
 
-Training with the EfficientNet-B3 backbone and inception-based multi-scale features achieved:
+Training with the EfficientNet-B3 backbone and inception-based multi-scale features produced:
 
-* **Validation IoU:** \~0.64
-* **Validation Dice Score:** \~0.78
+* **Validation IoU:** ~0.64
+* **Validation Dice Score:** ~0.78
 
-These results demonstrate **robust segmentation performance** in complex urban environments, even with relatively limited labeled data.
+These metrics indicate **strong and stable segmentation performance**, demonstrating the model's ability to generalize to complex urban scenes even with relatively small training data.
 
 ## Run Inference
 
@@ -39,7 +38,7 @@ python src/inference.py --input path/to/image.png --output predictions/
 
 ## Example Predictions
 
-Some sample outputs showing predicted building footprints highlighted in white:
+Sample outputs highlighting predicted building footprints in white, illustrating the model's capability to detect structures across multiple scales:
 
 <p>
   <img src="./assets/inference_4.png" width="900">
