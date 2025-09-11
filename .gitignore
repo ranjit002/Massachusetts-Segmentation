@@ -1,4 +1,4 @@
 archive.zip
-archive
-notebooks/
-checkpoints/
+archive/*
+notebooks/*
+checkpoints/*
