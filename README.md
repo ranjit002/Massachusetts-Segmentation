@@ -5,7 +5,7 @@ This repository provides a complete deep learning pipeline for **building footpr
 ## Key Features & Design Choices
 
 * **Efficient U-Net Architecture**
-  A **lightweight U-Net** with an *EfficientNet-B3* encoder backbone, chosen for balance between model capacity and inference speed. EfficientNet-B3 offers a strong feature representation without overfitting on the small dataset.
+  A **lightweight U-Net** as its skip connections allow the model to retain fine-grained spatial information from the encoder, ensuring precise segmentation of building edges and small structures. An *EfficientNet-B3* encoder backbone was chosen for balance between model capacity and inference speed. EfficientNet-B3 offers a strong feature representation without overfitting on the small dataset.
 
 * **Multi-Scale Feature Extraction with Inception Modules**
   The decoder incorporates **inception-style convolutional blocks** to improve **scale invariance**. This design enables the model to capture both fine-grained details of small buildings and the overall structure of larger complexes, addressing the challenge posed by high-resolution aerial images.
