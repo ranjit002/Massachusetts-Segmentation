@@ -7,9 +7,6 @@ from dataset import BuildingDataset
 from model import SegmentationModel
 
 
-import matplotlib.pyplot as plt
-
-
 def visualise(**images):
     n = len(images)
     fig, axes = plt.subplots(1, n, figsize=(4 * n, 4), constrained_layout=True)
@@ -48,7 +45,9 @@ CHECKPOINT_PATH = "checkpoints/EfficientNet-B3-trained.pth"
 DEVICE = (
     "cuda"
     if torch.cuda.is_available()
-    else "mps" if torch.mps.is_available() else "cpu"
+    else "mps"
+    if torch.mps.is_available()
+    else "cpu"
 )
 THRESHOLD = 0.5
 
@@ -63,7 +62,7 @@ model = SegmentationModel.load_from_checkpoint(CHECKPOINT_PATH)
 model.eval()
 model.to(DEVICE)
 
-print(f"[INFO] Loading mask and image...")
+print("[INFO] Loading mask and image...")
 
 image, mask = test_dataset[IMAGE_INDEX]
 
