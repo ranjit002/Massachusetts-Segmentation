@@ -1,0 +1,14 @@
+[project]
+name = "massachusetts-segmentation"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "albumentations>=2.0.8",
+    "matplotlib>=3.10.7",
+    "pytorch-lightning>=2.5.5",
+    "segmentation-models-pytorch>=0.5.0",
+    "torch>=2.9.0",
+    "torchvision>=0.24.0",
+]
