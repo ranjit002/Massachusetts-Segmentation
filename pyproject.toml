@@ -11,4 +11,5 @@ dependencies = [
     "segmentation-models-pytorch>=0.5.0",
     "torch>=2.9.0",
     "torchvision>=0.24.0",
+    "tqdm>=4.67.1",
 ]
